@@ -19,21 +19,25 @@
   ],
   "dependencies": {
     "angular": "~1.5.8",
-    "angular-material": "~1.1.0",
     "angular-animate": "~1.5.8",
-    "animate.css": "^3.5.1",
-    "angular-route": "^1.5.8",
-    "angular-i18n": "^1.5.8",
-    "angular-messages": "^1.5.8",
+    "angular-aria": "~1.5.8",
+    "angular-file-saver": "elquimeras/ng-file-saver#^1.1.4",
     "angular-flowtype": "*",
+    "angular-i18n": "~1.5.8",
+    "angular-material-data-table": "^0.10.9",
+    "angular-material": "~1.1.0",
+    "angular-messages": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "animate.css": "^3.5.1",
     "Flowtype.js": "^1.1.0",
-    "odometer": "^0.4.7",
-    "Sortable": "^1.4.2",
     "ng-file-upload": "^12.0.4",
-    "angular-file-saver": "^1.1.1",
-    "angular-material-data-table": "^0.10.9"
+    "odometer": "^0.4.7",
+    "Sortable": "~1.4.2"
   },
   "resolutions": {
-    "angular": "^1.5.8"
+    "angular": "~1.5.8",
+    "angular-aria": "~1.5.8",
+    "angular-messages": "~1.5.8",
+    "angular-animate": "~1.5.8"
   }
 }
