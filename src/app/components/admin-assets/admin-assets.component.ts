@@ -6,19 +6,15 @@ import { AssetService } from 'src/app/services/asset.service';
 @Component({
   selector: 'app-admin-assets',
   templateUrl: './admin-assets.component.html',
-  styleUrls: ['./admin-assets.component.scss']
+  styleUrls: ['./admin-assets.component.scss'],
 })
 export class AdminAssetsComponent implements OnInit {
+  assets: Asset[] = [];
 
-  assets: Asset[] = []
-
-  constructor(
-    private sanitizer: DomSanitizer,
-    private assetService: AssetService
-  ) { }
+  constructor(private sanitizer: DomSanitizer, private assetService: AssetService) {}
 
   ngOnInit(): void {
-    this.assetService.assets.subscribe(a => {
+    this.assetService.assets.subscribe((a) => {
       this.assets = a.map((a, i, s) => {
         console.log(a);
         a.dataUrl = this.sanitizer.bypassSecurityTrustUrl(a.data);
@@ -40,7 +36,6 @@ export class AdminAssetsComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-
       console.log(file);
       console.log(reader.result);
 
@@ -49,7 +44,7 @@ export class AdminAssetsComponent implements OnInit {
         name: file.name,
         type: file.type,
         data: reader.result,
-        dataUrl: undefined
+        dataUrl: undefined,
       };
 
       this.assetService.addAsset(asset);

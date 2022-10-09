@@ -9,44 +9,40 @@ import { PoetService } from 'src/app/services/poet.service';
 @Component({
   selector: 'app-admin-poets',
   templateUrl: './admin-poets.component.html',
-  styleUrls: ['./admin-poets.component.scss']
+  styleUrls: ['./admin-poets.component.scss'],
 })
 export class AdminPoetsComponent implements OnInit {
-
   poets: Poet[] = [];
   groups: Group[] = [];
   sortTableBy = 'name';
   sortTableDir = 'asc';
 
-  constructor(
-    private poetService: PoetService,
-    private groupService: GenericDataService<Group>,
-    private router: Router,
-    private messageService: MessageService
-  ) { }
+  constructor(private poetService: PoetService, private groupService: GenericDataService<Group>, private router: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.poetService.poets.subscribe(p => this.poets = p);
-    this.groupService.data.subscribe(d => this.groups = d);
+    this.poetService.poets.subscribe((p) => (this.poets = p));
+    this.groupService.data.subscribe((d) => (this.groups = d));
   }
 
   setSortTableBy(key: string) {
     if (this.sortTableBy == key) {
-      if (this.sortTableDir == "asc") { this.sortTableDir = "desc"; }
-      else { this.sortTableDir = "asc"; }
+      if (this.sortTableDir == 'asc') {
+        this.sortTableDir = 'desc';
+      } else {
+        this.sortTableDir = 'asc';
+      }
     } else {
       this.sortTableBy = key;
-      this.sortTableDir = "asc";
+      this.sortTableDir = 'asc';
     }
   }
 
   sortBy(arr: any[], key: string): any[] {
     return arr.sort((a, b) => {
-      if (this.sortTableDir == "asc") {
+      if (this.sortTableDir == 'asc') {
         return a[key] > b[key] ? 1 : -1;
       } else {
         return a[key] > b[key] ? -1 : 1;
-
       }
     });
   }

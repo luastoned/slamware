@@ -7,23 +7,19 @@ import { PoetService } from 'src/app/services/poet.service';
 @Component({
   selector: 'app-admin-groups',
   templateUrl: './admin-groups.component.html',
-  styleUrls: ['./admin-groups.component.scss']
+  styleUrls: ['./admin-groups.component.scss'],
 })
 export class AdminGroupsComponent implements OnInit {
-
-  poets: Poet[] = []
+  poets: Poet[] = [];
   groups: Group[] = [];
 
-  constructor(
-    private poetService: PoetService,
-    private groupService: GenericDataService<Group>
-  ) {
-    this.groupService.Init("groups");
+  constructor(private poetService: PoetService, private groupService: GenericDataService<Group>) {
+    this.groupService.Init('groups');
   }
 
   ngOnInit(): void {
-    this.poetService.poets.subscribe(p => this.poets = p);
-    this.groupService.data.subscribe(d => this.groups = d);
+    this.poetService.poets.subscribe((p) => (this.poets = p));
+    this.groupService.data.subscribe((d) => (this.groups = d));
   }
 
   add() {
@@ -34,7 +30,7 @@ export class AdminGroupsComponent implements OnInit {
 
   countPoets(group_id: string | undefined): number {
     if (group_id) {
-      return this.poets.filter(m => m.group == group_id).length;
+      return this.poets.filter((m) => m.group == group_id).length;
     }
 
     return -1;

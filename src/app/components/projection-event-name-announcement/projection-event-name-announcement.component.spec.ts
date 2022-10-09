@@ -8,9 +8,8 @@ describe('ProjectionEventNameAnnouncementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectionEventNameAnnouncementComponent ]
-    })
-    .compileComponents();
+      declarations: [ProjectionEventNameAnnouncementComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

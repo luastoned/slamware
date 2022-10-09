@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin-contest',
   templateUrl: './admin-contest.component.html',
-  styleUrls: ['./admin-contest.component.scss']
+  styleUrls: ['./admin-contest.component.scss'],
 })
 export class AdminContestComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

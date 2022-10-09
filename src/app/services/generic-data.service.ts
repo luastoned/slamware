@@ -3,23 +3,20 @@ import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GenericDataService<T> {
-
-  private dataKey = "data-key-not-specified";
+  private dataKey = 'data-key-not-specified';
 
   _data: T[] = [];
   data: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
-  constructor(
-    private dataService: DataService
-  ) { }
+  constructor(private dataService: DataService) {}
 
   Init(_dataKey: string) {
     this.dataKey = _dataKey;
 
-    this.dataService.data.subscribe(d => {
+    this.dataService.data.subscribe((d) => {
       if (d) {
         this._data = this.dataService.Get(this.dataKey);
         this.data.next(this._data);
@@ -39,7 +36,7 @@ export class GenericDataService<T> {
   }
 
   Get(id: string): T | undefined {
-    return this._data.find(m => {
+    return this._data.find((m) => {
       if ((m as any).id == id) {
         return true;
       }
@@ -49,12 +46,11 @@ export class GenericDataService<T> {
   }
 
   Update(entry: T): T | undefined {
+    let p = this.Get((entry as any).id);
 
-    let p = this.Get((entry as any).id)
+    let keys = Object.keys(p as any);
 
-    let keys = Object.keys((p as any));
-
-    keys.forEach(key => {
+    keys.forEach((key) => {
       (p as any)[key] = (entry as any)[key];
     });
 
@@ -63,7 +59,7 @@ export class GenericDataService<T> {
   }
 
   Remove(entry: T) {
-    this._data = this._data.filter(m => (m as any).id != (entry as any).id);
+    this._data = this._data.filter((m) => (m as any).id != (entry as any).id);
     this.dataService.Update(this.dataKey, this._data);
   }
 }

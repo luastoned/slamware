@@ -8,9 +8,8 @@ describe('UiProgressRingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UiProgressRingComponent ]
-    })
-    .compileComponents();
+      declarations: [UiProgressRingComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

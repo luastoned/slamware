@@ -1,25 +1,20 @@
-import { Injectable, Sanitizer } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ClarityIcons, userIcon, usersIcon, importIcon, exportIcon, displayIcon, trashIcon, angleIcon } from '@cds/core/icon';
-
+import { angleIcon, ClarityIcons, displayIcon, exportIcon, importIcon, trashIcon, userIcon, usersIcon } from '@cds/core/icon';
 
 import '@cds/core/icon/register.js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IconService {
-
   /**
    *
    */
-  constructor(
-    private domSanitizer: DomSanitizer
-  ) { }
+  constructor(private domSanitizer: DomSanitizer) {}
 
   RegisterIcons() {
-
-    console.log("register icons");
+    console.log('register icons');
 
     ClarityIcons.addIcons(userIcon);
     ClarityIcons.addIcons(usersIcon);

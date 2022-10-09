@@ -3,25 +3,23 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-ui-progress-ring',
   templateUrl: './ui-progress-ring.component.html',
-  styleUrls: ['./ui-progress-ring.component.scss']
+  styleUrls: ['./ui-progress-ring.component.scss'],
 })
 export class UiProgressRingComponent implements OnInit {
-
-  @Input("value")
+  @Input('value')
   value: number = 0;
 
-  @Input("background")
-  background: string = "#17242b";
+  @Input('background')
+  background: string = '#17242b';
 
-  @Input("foreground")
-  foreground: string = "#471a91";
+  @Input('foreground')
+  foreground: string = '#471a91';
 
-  backgroundOuterRing = "";
+  backgroundOuterRing = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-
     setInterval(() => {
       this.setValue(this.value);
     }, 50);
@@ -39,8 +37,7 @@ export class UiProgressRingComponent implements OnInit {
       val = 100;
     }
 
-    let rot = (val * 3.6);
-    this.backgroundOuterRing = "conic-gradient( " + this.foreground + " " + rot + "deg,  " + this.background + " " + rot + "deg 350deg)";
+    let rot = val * 3.6;
+    this.backgroundOuterRing = 'conic-gradient( ' + this.foreground + ' ' + rot + 'deg,  ' + this.background + ' ' + rot + 'deg 350deg)';
   }
-
 }

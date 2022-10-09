@@ -2,61 +2,57 @@
 
 $imported-modules: null;
 
-@import "./../node_modules/@clr/icons/clr-icons.css";
+@import './../node_modules/@clr/icons/clr-icons.css';
 
-body[cds-theme="dark"] {
-    @import "./../node_modules/@clr/ui/src/dark-theme.scss";
+body[cds-theme='dark'] {
+  @import './../node_modules/@clr/ui/src/dark-theme.scss';
 }
-@import "./../node_modules/@clr/ui/src/main.scss";
+@import './../node_modules/@clr/ui/src/main.scss';
 
-
-@import "./../node_modules/animate.css/animate.css";
-
+@import './../node_modules/animate.css/animate.css';
 
 .p-0 {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 .p-1 {
-    padding: .25rem !important;
+  padding: 0.25rem !important;
 }
 .p-2 {
-    padding: .5rem !important;
+  padding: 0.5rem !important;
 }
 .p-3 {
-    padding: 1rem !important;
+  padding: 1rem !important;
 }
 .p-4 {
-    padding: 1.5rem !important;
+  padding: 1.5rem !important;
 }
 .p-5 {
-    padding: 3rem !important;
+  padding: 3rem !important;
 }
 
 body {
-    background-color: #000 !important;
+  background-color: #000 !important;
 }
 
 .poetry-header {
-    padding-left: 0;
-    padding-top: 0.9rem;
-    position: sticky;
-    top: 0;
-    background: #1b2a32;
+  padding-left: 0;
+  padding-top: 0.9rem;
+  position: sticky;
+  top: 0;
+  background: #1b2a32;
 
+  .headline {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 
-    .headline {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+    line-height: 1.8rem;
 
-        line-height: 1.8rem;
+    color: white;
 
-        color: white;
-
-        border-bottom: 0.15rem solid var(--clr-nav-active-box-shadow-color);
-    }
+    border-bottom: 0.15rem solid var(--clr-nav-active-box-shadow-color);
+  }
 }
 
 .poetry-body {
-    height: calc(100% - 3rem);
-
+  height: calc(100% - 3rem);
 }

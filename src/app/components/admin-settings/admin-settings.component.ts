@@ -7,20 +7,16 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-admin-settings',
   templateUrl: './admin-settings.component.html',
-  styleUrls: ['./admin-settings.component.scss']
+  styleUrls: ['./admin-settings.component.scss'],
 })
 export class AdminSettingsComponent implements OnInit {
-
   config: Config | undefined = undefined;
   configKeys: string[] = [];
 
-  constructor(
-    private configService: ConfigService,
-    private dataService: DataService
-  ) { }
+  constructor(private configService: ConfigService, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.configService.config.subscribe(c => {
+    this.configService.config.subscribe((c) => {
       this.config = c;
       if (c != undefined) {
         this.configKeys = Object.keys(c);
@@ -54,9 +50,7 @@ export class AdminSettingsComponent implements OnInit {
     }
   }
 
-  remove(key: string) {
-
-  }
+  remove(key: string) {}
 
   resetEvent() {
     this.dataService.Remove();
@@ -67,12 +61,11 @@ export class AdminSettingsComponent implements OnInit {
 
     fileContent = this.encodeSpecialChars(fileContent);
 
-    console.log("file content", fileContent);
+    console.log('file content', fileContent);
 
     if (this.config) {
-
-      let timestamp = moment().format("YYYY-MM-DD");
-      let exportFileDefaultName = 'export_' + (this.config.name)?.replace(" ", "_") + "_" + timestamp + '.json';
+      let timestamp = moment().format('YYYY-MM-DD');
+      let exportFileDefaultName = 'export_' + this.config.name?.replace(' ', '_') + '_' + timestamp + '.json';
 
       let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(fileContent);
       let linkElement = document.createElement('a');
@@ -83,31 +76,29 @@ export class AdminSettingsComponent implements OnInit {
   }
 
   sCharsList = [
-    { d: "ü", e: "&uuml;" },
-    { d: "ä", e: "&auml;" },
-    { d: "ö", e: "&ouml;" },
-    { d: "Ü", e: "&Uuml;" },
-    { d: "Ä", e: "&Auml;" },
-    { d: "Ö", e: "&Ouml;" },
+    { d: 'ü', e: '&uuml;' },
+    { d: 'ä', e: '&auml;' },
+    { d: 'ö', e: '&ouml;' },
+    { d: 'Ü', e: '&Uuml;' },
+    { d: 'Ä', e: '&Auml;' },
+    { d: 'Ö', e: '&Ouml;' },
   ];
 
   private encodeSpecialChars(str: string): string {
-    
     for (let i = 0; i < this.sCharsList.length; i++) {
-      let regex = new RegExp(this.sCharsList[i].d, "g");
+      let regex = new RegExp(this.sCharsList[i].d, 'g');
       str = str.replace(regex, this.sCharsList[i].e);
     }
-    
+
     return str;
   }
 
   private decodeSpecialChars(str: string): string {
-
     for (let i = 0; i < this.sCharsList.length; i++) {
-      let regex = new RegExp(this.sCharsList[i].e, "g");
+      let regex = new RegExp(this.sCharsList[i].e, 'g');
       str = str.replace(regex, this.sCharsList[i].d);
     }
-    
+
     return str;
   }
 
@@ -116,7 +107,7 @@ export class AdminSettingsComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      let jsonString = atob((reader.result as string).replace("data:application/json;base64,", ""));
+      let jsonString = atob((reader.result as string).replace('data:application/json;base64,', ''));
       let decodedString = this.decodeSpecialChars(jsonString);
       console.log(decodedString);
       let data = JSON.parse(decodedString);
@@ -124,5 +115,4 @@ export class AdminSettingsComponent implements OnInit {
       this.dataService.Load(data);
     };
   }
-
 }

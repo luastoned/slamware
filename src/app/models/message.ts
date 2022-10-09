@@ -1,11 +1,10 @@
-
 export enum MessageType {
-    Any,
-    DataUpdate,
-    NextSlide
+  Any,
+  DataUpdate,
+  NextSlide,
 }
 
 export class Message {
-    type: MessageType = MessageType.Any;
-    data: any;
+  type: MessageType = MessageType.Any;
+  data: any;
 }

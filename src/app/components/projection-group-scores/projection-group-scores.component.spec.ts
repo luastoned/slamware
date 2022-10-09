@@ -8,9 +8,8 @@ describe('ProjectionGroupScoresComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectionGroupScoresComponent ]
-    })
-    .compileComponents();
+      declarations: [ProjectionGroupScoresComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

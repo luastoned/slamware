@@ -8,9 +8,8 @@ describe('AdminProjectionEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminProjectionEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminProjectionEditorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

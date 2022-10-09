@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SecurityContext } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Config } from 'src/app/models/config';
 import { AssetService } from 'src/app/services/asset.service';
@@ -6,17 +6,16 @@ import { AssetService } from 'src/app/services/asset.service';
 @Component({
   selector: 'app-projection-asset',
   templateUrl: './projection-asset.component.html',
-  styleUrls: ['./projection-asset.component.scss']
+  styleUrls: ['./projection-asset.component.scss'],
 })
 export class ProjectionAssetComponent implements OnInit {
-
   show = false;
 
   private _data: any | undefined;
-  @Input("data") set data(value: any | undefined) {
+  @Input('data') set data(value: any | undefined) {
     this._data = value;
 
-    if (this._data.id != "asset") {
+    if (this._data.id != 'asset') {
       this.show = false;
       return;
     }
@@ -32,14 +31,13 @@ export class ProjectionAssetComponent implements OnInit {
         this.asset = this.sanitizer.bypassSecurityTrustUrl(asset.data);
       }
     }
-
   }
   get data(): any | undefined {
     return this._data;
   }
 
   private _config: Config | undefined;
-  @Input("config") set config(value: Config | undefined) {
+  @Input('config') set config(value: Config | undefined) {
     this._config = value;
   }
   get config(): Config | undefined {
@@ -48,13 +46,7 @@ export class ProjectionAssetComponent implements OnInit {
 
   asset: any;
 
+  constructor(private sanitizer: DomSanitizer, private assetService: AssetService) {}
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    private assetService: AssetService
-  ) { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
